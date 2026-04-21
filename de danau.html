@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dedanau Hotel & Resto - Authentic Balinese Cuisine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8B4513;
+            --secondary: #D2691E;
+            --accent: #CD853F;
+            --dark: #2C1810;
+            --light: #FDF5E6;
+            --cream: #FAF0E6;
+            --gold: #B8860B;
+            --green: #556B2F;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(44, 24, 16, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--light);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--light);
+            letter-spacing: 2px;
+        }
+
+        .logo-text span {
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .location-badge {
+            background: var(--gold);
+            color: var(--dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            height: 100vh;
+            background: linear-gradient(rgba(44, 24, 16, 0.6), rgba(44, 24, 16, 0.7)),
+                        url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(184,134,11,0.1)" stroke-width="0.5"/></svg>');
+            background-size: 100px;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-subtitle {
+            color: var(--gold);
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            animation: fadeInUp 1s ease 0.2s both;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-desc {
+            color: var(--cream);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background: #DAA520;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(184, 134, 11, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--light);
+        }
+
+        .btn-outline:hover {
+            background: var(--light);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        /* Batik Pattern Divider */
+        .batik-divider {
+            height: 60px;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--primary),
+                var(--primary) 10px,
+                var(--dark) 10px,
+                var(--dark) 20px
+            );
+            position: relative;
+        }
+
+        .batik-divider::after {
+            content: '❦';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--light);
+            padding: 0 2rem;
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        /* About Section */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            border: 3px solid var(--gold);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-text p {
+            font-size: 0.85rem;
+            color: #888;
+            margin: 0;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            background: var(--dark);
+            color: var(--light);
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,20 Q40,5 60,20 T100,20" fill="none" stroke="rgba(184,134,11,0.05)" stroke-width="1"/></svg>');
+            background-size: 200px;
+        }
+
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu-section .section-title {
+            color: var(--light);
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .menu-tab {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--light);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+
+        .menu-tab.active,
+        .menu-tab:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(184, 134, 11, 0.2);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-color: var(--gold);
+        }
+
+        .menu-card-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-card-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.5));
+        }
+
+        .menu-card-content {
+            padding: 1.5rem;
+        }
+
+        .menu-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-card-title {
+            font-size: 1.2rem;
+            color: var(--light);
+        }
+
+        .menu-card-price {
+            color: var(--gold);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .menu-card-desc {
+            color: #aaa;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .menu-badge {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            background: var(--gold);
+            color: var(--dark);
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 24, 16, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: var(--light);
+            font-size: 2rem;
+        }
+
+        /* Location & Contact */
+        .contact-section {
+            background: var(--cream);
+            padding: 5rem 2rem;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            height: 400px;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .map-placeholder {
+            text-align: center;
+        }
+
+        .map-placeholder i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--light);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+
+        .contact-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .contact-text p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .contact-text a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            padding: 4rem 2rem 2rem;
+            border-top: 3px solid var(--gold);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-brand h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .footer-brand p {
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            transition: transform 0.3s;
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-om"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>DEDANAU</h1>
+                    <span>Hotel & Resto</span>
+                </div>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Galeri</a></li>
+                <li><a href="#contact">Kontak</a></li>
+                <li>
+                    <div class="location-badge">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Bedugul, Bali</span>
+                    </div>
+                </li>
+            </ul>
+            
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="hero-subtitle">Selamat Datang di</p>
+            <h1 class="hero-title">Dedanau Hotel & Resto</h1>
+            <p class="hero-desc">
+                Nikmati keindahan panorama Danau Beratan sambil menikmati hidangan autentik khas Bali 
+                dengan sentuhan modern. Pengalaman kuliner tak terlupakan di ketinggian 1.200 mdpl.
+            </p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary">
+                    <i class="fas fa-utensils"></i> Lihat Menu
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <i class="fas fa-map-marked-alt"></i> Lokasi Kami
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="batik-divider"></div>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-header fade-in">
+            <p class="section-tag">Tentang Kami</p>
+            <h2 class="section-title">Dedanau Hotel & Resto</h2>
+        </div>
+        
+        <div class="about-grid">
+            <div class="about-image fade-in">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Restoran Dedanau">
+            </div>
+            
+            <div class="about-content fade-in">
+                <h3>Pengalaman Kuliner dengan View Danau</h3>
+                <p>
+                    Terletak strategis di kawasan wisata Bedugul, Dedanau Hotel & Resto menawarkan 
+                    pengalaman bersantap yang unik dengan pemandangan langsung ke Danau Beratan dan 
+                    Pura Ulun Danu. Restoran kami menggabungkan cita rasa tradisional Bali dengan 
+                    teknik memasak modern.
+                </p>
+                <p>
+                    Setiap hidangan disiapkan dengan bahan-bahan segar dari petani lokal sekitar 
+                    Bedugul, dikenal sebagai lumbung sayur Bali. Kami bangga menyajikan Ayam Betutu, 
+                    Bebek Goreng, dan berbagai hidangan khas Bali yang otentik.
+                </p>
+                
+                <div class="features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>View Danau</h4>
+                            <p>Pemandangan langsung Danau Beratan</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Bahan Segar</h4>
+                            <p>Dari kebun lokal Bedugul</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-hotel"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Penginapan</h4>
+                            <p>Kamar dengan view terbaik</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>WiFi Gratis</h4>
+                            <p>Akses internet berkecepatan tinggi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="menu-container">
+            <div class="section-header fade-in">
+                <p class="section-tag" style="color: var(--gold);">Menu Favorit</p>
+                <h2 class="section-title" style="color: var(--light);">Hidangan Khas Kami</h2>
+            </div>
+            
+            <div class="menu-tabs fade-in">
+                <button class="menu-tab active" onclick="filterMenu('all')">Semua</button>
+                <button class="menu-tab" onclick="filterMenu('chicken')">Ayam</button>
+                <button class="menu-tab" onclick="filterMenu('duck')">Bebek</button>
+                <button class="menu-tab" onclick="filterMenu('seafood')">Seafood</button>
+                <button class="menu-tab" onclick="filterMenu('drink')">Minuman</button>
+            </div>
+            
+            <div class="menu-grid" id="menuGrid">
+                <!-- Chicken Menu -->
+                <div class="menu-card" data-category="chicken">
+                    <div class="menu-card-image">
+                        <i class="fas fa-drumstick-bite"></i>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <h3 class="menu-card-title">Ayam Betutu</h3>
+                            <span class="menu-card-price">Rp 65.000</span>
+                        </div>
+                        <p class="menu-card-desc">Ayam kampung khas Bali dengan bumbu betutu tradisional, disajikan dengan nasi putih dan sambal matah.</p>
+                        <span class="menu-badge">Best Seller</span>
+                    </div>
+                </div>
+                
+                <div class="menu-card" data-category="chicken">
+                    <div class="menu-card-image">
+                        <i class="fas fa-drumstick-bite"></i>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <h3 class="menu-card-title">Ayam Goreng De Danau</h3>
+                            <span class="menu-card-price">Rp 40.000</span>
+                        </div>
+                        <p class="menu-card-desc">Ayam goreng crispy dengan bumbu rahasia khas Dedanau, disajikan dengan lalapan dan sambal.</p>
+                    </div>
+                </div>
+                
+                <div class="menu-card" data-category="chicken">
+                    <div class="menu-card-image">
+                        <i class="fas fa-drumstick-bite"></i>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <h3 class="menu-card-title">Chicken Teriyaki</h3>
+                            <span class="menu-card-price">Rp 60.000</span>
+                        </div>
+                        <p class="menu-card-desc">Ayam panggang dengan saus teriyaki khas Jepang, disajikan dengan nasi putih hangat.</p>
+                    </div>
+                </div>
+                
+                <!-- Duck Menu -->
+                <div class="menu-card" data-category="duck">
+                    <div class="menu-card-image">
+                        <i class="fas fa-crow"></i>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <h3 class="menu-card-title">Bebek Goreng Crispy</h3>
+                            <span class="menu-card-price">Rp 75.000</span>
+                        </div>
+                        <p class="menu-card-desc">Bebek goreng super crispy dengan bumbu rempah Bali, disajikan dengan nasi dan sayur urap.</p>
+                        <span class="menu-badge">Favorit</span>
+                    </div>
+                </div>
+                
+                <!-- Seafood Menu -->
+                <div class="menu-card" data-category="seafood">
+                    <div class="menu-card-image">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <h3 class="menu-card-title">Ikan Bakar Jimbaran</h3>
+                            <span class="menu-card-price">Rp 85.000</span>
+                        </div>
+                        <p class="menu-card-desc">Ikan bakar dengan bumbu Jimbaran, disajikan dengan sambal matah dan plecing kangkung.</p>
+                    </div>
+                </div>
+                
+                <div class="menu-card" data-category="seafood">
+                    <div class="menu-card-image">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <h3 class="menu-card-title">Udang Goreng Tepung</h3>
+                            <span class="menu-card-price">Rp 70.000</span>
+                        </div>
+                        <p class="menu-card-desc">Udang segar goreng tepung crispy dengan saus tartar dan salad sayuran.</p>
+                    </div>
+                </div>
+                
+                <!-- Drinks -->
+                <div class="menu-card" data-category="drink">
+                    <div class="menu-card-image">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <h3 class="menu-card-title">Kopi Bali</h3>
+                            <span class="menu-card-price">Rp 25.000</span>
+                        </div>
+                        <p class="menu-card-desc">Kopi arabika khas Kintamani dengan cita rasa buah yang khas dan aroma wangi.</p>
+                    </div>
+                </div>
+                
+                <div class="menu-card" data-category="drink">
+                    <div class="menu-card-image">
+                        <i class="fas fa-glass-whiskey"></i>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <h3 class="menu-card-title">Jamu Tradisional</h3>
+                            <span class="menu-card-price">Rp 20.000</span>
+                        </div>
+                        <p class="menu-card-desc">Minuman herbal tradisional Bali untuk kesehatan dan stamina.</p>
+                        <span class="menu-badge">Sehat</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="section-header fade-in">
+            <p class="section-tag">Galeri</p>
+            <h2 class="section-title">Momen di Dedanau</h2>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Interior">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Makanan">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="View">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Kamar">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="batik-divider"></div>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <div class="section-header fade-in">
+                <p class="section-tag">Kunjungi Kami</p>
+                <h2 class="section-title">Lokasi & Kontak</h2>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="map-container fade-in">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h3>P5F7+VJV, Candikuning</h3>
+                        <p>Kec. Baturiti, Kabupaten Tabanan, Bali 82191</p>
+                        <a href="https://maps.google.com/?q=P5F7+VJV+Candikuning+Baturiti+Tabanan+Bali" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">
+                            <i class="fas fa-directions"></i> Buka di Google Maps
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-info fade-in">
+                    <h3>Informasi Kontak</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Alamat</h4>
+                            <p>P5F7+VJV, Candikuning<br>Kec. Baturiti, Kabupaten Tabanan<br>Bali 82191, Indonesia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Telepon</h4>
+                            <p><a href="tel:+6281234567890">+62 812-3456-7890</a></p>
+                            <p style="font-size: 0.85rem; margin-top: 0.3rem;">Buka setiap hari: 08.00 - 22.00 WIB</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Instagram</h4>
+                            <p><a href="https://instagram.com/dedanauhotel.resto" target="_blank">@dedanauhotel.resto</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@dedanauhotel.com">info@dedanauhotel.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>DEDANAU</h2>
+                <p>Hotel & Resto yang terletak di kawasan wisata Bedugul, menawarkan pengalaman menginap dan bersantap dengan pemandangan Danau Beratan yang memukau.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/dedanauhotel.resto" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    <a href="https://wa.me/6281234567890"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Navigasi</h3>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Galeri</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Menu</h3>
+                <ul>
+                    <li><a href="#menu">Ayam Betutu</a></li>
+                    <li><a href="#menu">Bebek Goreng</a></li>
+                    <li><a href="#menu">Ikan Bakar</a></li>
+                    <li><a href="#menu">Minuman</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Layanan</h3>
+                <ul>
+                    <li><a href="#">Reservasi</a></li>
+                    <li><a href="#">Catering</a></li>
+                    <li><a href="#">Paket Wisata</a></li>
+                    <li><a href="#">Event Space</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p> Dedanau Hotel & Resto. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--gold);"></i> in Bali</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6281234567890" class="fab" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '0.5rem 0';
+                navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.3)';
+            } else {
+                navbar.style.padding = '1rem 0';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Menu filter
+        function filterMenu(category) {
+            const cards = document.querySelectorAll('.menu-card');
+            const tabs = document.querySelectorAll('.menu-tab');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.background = 'rgba(44, 24, 16, 0.98)';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.padding = '2rem';
+            navLinks.style.gap = '1.5rem';
+        });
+    </script>
+</body>
+</html>
